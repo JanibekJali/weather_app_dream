@@ -10,7 +10,7 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Text(''),
+      home: Text('Hello'),
     );
   }
 }
