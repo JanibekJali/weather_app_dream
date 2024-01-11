@@ -39,10 +39,12 @@ class _HomeState extends State<Home> {
       body: Column(
         children: [
           SizedBox(
-            height: 800,
+            height: MediaQuery.of(context).size.height * 0.9,
           ),
           Expanded(
             child: ListView.builder(
+              physics: const AlwaysScrollableScrollPhysics(),
+              shrinkWrap: true,
               itemCount: time.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
@@ -51,35 +53,39 @@ class _HomeState extends State<Home> {
                     const SizedBox(
                       width: 15,
                     ),
-                    Container(
-                        height: 130,
-                        width: 65,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.30000001192092896),
-                          borderRadius: BorderRadius.circular(50),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/icon${index + 1}.png'),
-                              fit: BoxFit.contain),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              time[index],
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w800, fontSize: 12),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              temperatura[index],
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w800, fontSize: 12),
-                            ),
-                          ],
-                        )),
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                          height: 130,
+                          width: 65,
+                          decoration: BoxDecoration(
+                            color:
+                                Colors.white.withOpacity(0.30000001192092896),
+                            borderRadius: BorderRadius.circular(50),
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/icon${index + 1}.png'),
+                                fit: BoxFit.contain),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                time[index],
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w800, fontSize: 12),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                temperatura[index],
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w800, fontSize: 12),
+                              ),
+                            ],
+                          )),
+                    ),
                   ],
                 );
               },
