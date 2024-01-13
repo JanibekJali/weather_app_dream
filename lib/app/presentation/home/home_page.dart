@@ -33,6 +33,7 @@ class _HomeState extends State<Home> {
     '20°',
     '21°',
   ];
+  String san = 'sen';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
