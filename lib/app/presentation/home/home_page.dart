@@ -8,170 +8,416 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  double _currentSliderValue = 0;
-  List<String> time = [
-    'now',
-    '13:00',
-    '14:00',
-    '15:00',
-    '16:00',
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00',
-    '21:00',
-  ];
-  List<String> temperatura = [
-    "20°",
-    '13°',
-    '14°',
-    '15°',
-    '16°',
-    '17°',
-    '18°',
-    '19°',
-    '20°',
-    '21°',
-  ];
   @override
   Widget build(BuildContext context) {
+    final h = MediaQuery.of(context).size.height;
+    final w = MediaQuery.of(context).size.width;
+    List<String> time = [
+      'now',
+      '13:00',
+      '14:00',
+      '15:00',
+      '16:00',
+      '17:00',
+      '18:00',
+      '19:00',
+      '20:00',
+      '21:00',
+    ];
+    List<String> temperatura = [
+      "20°",
+      '13°',
+      '14°',
+      '15°',
+      '16°',
+      '17°',
+      '18°',
+      '19°',
+      '20°',
+      '21°',
+    ];
+    double SliderValue = 0;
+
     return Scaffold(
-      appBar: AppBar(
-          leading: Image.asset('assets/images/icon.png'),
-          title: Image.asset('assets/images/point.png'),
-          actions: [Image.asset('assets/images/vector.png')],
-          centerTitle: true,
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Color(0xff16C4EA), Color(0xff7DE8FF)],
-                  begin: FractionalOffset(0.0, 0.0),
-                  end: FractionalOffset(0.5, 0.0),
-                  stops: [0.0, 2.0],
-                  tileMode: TileMode.clamp),
-            ),
-          )),
-      backgroundColor: Colors.blue,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+      body: SingleChildScrollView(
+        child: Container(
+          height: h * 1.0,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Color(0xff9CECFE), Color(0xff9CECFE)],
+                begin: FractionalOffset(0.0, 0.0),
+                end: FractionalOffset(0.5, 0.0),
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp),
+          ),
+          child: Column(
             children: [
-              const Text(
-                'Today',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w200),
+              SizedBox(
+                height: h * 0.00,
               ),
-              const SizedBox(
-                width: 10,
-              ),
-              const InkWell(
-                  child: Text(
-                'Tomorrow',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w200),
-              )),
-              const SizedBox(
-                width: 10,
-              ),
-              InkWell(
-                  onTap: () {},
-                  child: const Text(
-                    'Next week',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w200),
-                  )),
-              const SizedBox(
-                width: 20,
-              ),
-              Center(
-                child: GestureDetector(
-                  onTap: () {},
-                  child: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: Color(0xff9A938C),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Image(image: AssetImage('assets/images/w.png')),
+                  SizedBox(
+                    width: w * 0.8,
                   ),
-                ),
-              )
+                  const Image(image: AssetImage('assets/images/ww.png')),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: w * 0.05,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: h * 0.01,
+                      ),
+                      const Text(
+                        'Bishkek,',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 40),
+                      ),
+                      const Text(
+                        'Kyrgyzstan',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 39),
+                      ),
+                      const Text(
+                        'Tue, Jun 30',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400, fontSize: 16),
+                      ),
+                      SizedBox(
+                        height: h * 0.3,
+                        child: Row(
+                          children: [
+                            Container(
+                              height: h * 9,
+                              width: w * 0.5,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                image: const DecorationImage(
+                                    image: AssetImage('assets/images/cl.png'),
+                                    fit: BoxFit.cover),
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(
+                                left: 20,
+                                top: 10,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        '19',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 110),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                          bottom: 80,
+                                        ),
+                                        child: Text(
+                                          '◦ᴄ',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 25),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 30),
+                                    child: Text(
+                                      'Ryiny',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 20),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            height: 80,
+                            width: w * 0.9,
+                            decoration: BoxDecoration(
+                              color:
+                                  Colors.white.withOpacity(0.30000001192092896),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: 4,
+                                        top: 7,
+                                      ),
+                                      child: Container(
+                                        height: 70,
+                                        width: 50,
+                                        decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/q1.png'),
+                                              fit: BoxFit.cover),
+                                        ),
+                                      ),
+                                    ),
+                                    const Text(
+                                      'RainFal',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18),
+                                    ),
+                                    SizedBox(
+                                      width: w * 0.5,
+                                    ),
+                                    const Text(
+                                      '3cm',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 20),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            height: 80,
+                            width: w * 0.9,
+                            decoration: BoxDecoration(
+                              color:
+                                  Colors.white.withOpacity(0.30000001192092896),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: 4,
+                                        top: 7,
+                                      ),
+                                      child: Container(
+                                        height: 70,
+                                        width: 50,
+                                        decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/q3.png'),
+                                              fit: BoxFit.cover),
+                                        ),
+                                      ),
+                                    ),
+                                    const Text(
+                                      'RainFal',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18),
+                                    ),
+                                    SizedBox(
+                                      width: w * 0.5,
+                                    ),
+                                    const Text(
+                                      '3cm',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 20),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            height: 80,
+                            width: w * 0.9,
+                            decoration: BoxDecoration(
+                              color:
+                                  Colors.white.withOpacity(0.30000001192092896),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: 4,
+                                        top: 7,
+                                      ),
+                                      child: Container(
+                                        height: 70,
+                                        width: 50,
+                                        decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/q2.png'),
+                                              fit: BoxFit.cover),
+                                        ),
+                                      ),
+                                    ),
+                                    const Text(
+                                      'RainFal',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18),
+                                    ),
+                                    SizedBox(
+                                      width: w * 0.5,
+                                    ),
+                                    const Text(
+                                      '3cm',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 20),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Container(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const SizedBox(
+                          width: 60,
+                        ),
+                        const Text(
+                          'Today',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 20),
+                        ),
+                        const SizedBox(
+                          width: 25,
+                          height: 50,
+                        ),
+                        const Text(
+                          'Tomorrow',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        SizedBox(
+                          width: w * 0.2,
+                        ),
+                        const Text(
+                          'Next 7 Days',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        const SizedBox(
+                          width: 25,
+                        ),
+                        Container(
+                          child: const Icon(Icons.chevron_right),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: w * 0.9,
+                    child: Slider(
+                      min: 0.0,
+                      max: 100,
+                      value: SliderValue,
+                      inactiveColor: Colors.black,
+                      activeColor: Colors.black,
+                      onChanged: (value) {
+                        setState(() {});
+
+                        SliderValue = value;
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 104,
+                    child: Expanded(
+                      child: ListView.builder(
+                        itemCount: time.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Row(
+                            children: [
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              Container(
+                                  width: 70,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white
+                                        .withOpacity(0.30000001192092896),
+                                    borderRadius: BorderRadius.circular(50),
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/icon${index + 1}.png'),
+                                        fit: BoxFit.contain),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                        time[index],
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.w800,
+                                            fontSize: 12),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        temperatura[index],
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.w900,
+                                            fontSize: 15),
+                                      ),
+                                    ],
+                                  )),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                ],
+              ),
             ],
           ),
-          Slider(
-            activeColor: Colors.black,
-            inactiveColor: Colors.grey[800],
-            thumbColor: Colors.black,
-            value: _currentSliderValue,
-            min: 0,
-            max: 100,
-            onChanged: (double value) {
-              setState(() {
-                _currentSliderValue = value;
-              });
-            },
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.6,
-          ),
-          Expanded(
-            child: ListView.builder(
-              physics: const AlwaysScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: time.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return Row(
-                  children: [
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                          height: 130,
-                          width: 65,
-                          decoration: BoxDecoration(
-                            color:
-                                Colors.white.withOpacity(0.30000001192092896),
-                            borderRadius: BorderRadius.circular(50),
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/icon${index + 1}.png'),
-                                fit: BoxFit.contain),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text(
-                                time[index],
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.w800, fontSize: 12),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                temperatura[index],
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.w800, fontSize: 12),
-                              ),
-                            ],
-                          )),
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-        ],
+        ),
       ),
     );
   }
